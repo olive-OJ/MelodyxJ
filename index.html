@@ -1,1 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Sweetheart, Melody ❤️</title>
+    <style>
+        body {
+            background-color: #FFF0F5; /* light pink */
+            font-family: 'Parisienne', cursive;
+            text-align: center;
+            padding-top: 50px;
+            background-image: url('https://www.transparenttextures.com/patterns/hearts.png');
+            background-repeat: repeat;
+        }
+
+        h1 {
+            color: #FF69B4; /* hot pink */
+            font-size: 48px;
+            animation: bounce 1s infinite;
+            text-shadow: 2px 2px 4px rgba(255, 0, 0, 0.5);
+        }
+
+        button {
+            background-color: #FF1493; /* deep pink */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            animation: wiggle 2s infinite;
+            box-shadow: 2px 2px 4px rgba(255, 0, 0, 0.5);
+        }
+
+        button:hover {
+            background-color: #C71585; /* darker pink */
+        }
+
+        p {
+            font-size: 24px;
+            margin-top: 20px;
+            animation: fadeIn 1s;
+            text-shadow: 1px 1px 2px rgba(255, 0, 0, 0.3);
+        }
+
+        .rose {
+            position: absolute;
+            width: 50px;
+            height: auto;
+        }
+
+        @keyframes bounce {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.2);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes wiggle {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            25% {
+                transform: rotate(-5deg);
+            }
+
+            75% {
+                transform: rotate(5deg);
+            }
+
+            100% {
+                transform: rotate(0deg);
+            }
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .confetti-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #FF69B4;
+            border-radius: 50%;
+            animation: confettiAnimation 5s linear infinite;
+        }
+
+        @keyframes confettiAnimation {
+            0% {
+                transform: translate(-50%, -50%) rotate(0deg) scale(1);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translate(-50%, -50%) rotate(720deg) scale(2);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>My Sweetheart, Melody. Happy Valentine's!!❤️</h1>
+    <button id="messageButton">Click for a Romantic Surprise</button>
+    <p id="message"></p>
+
+    <div id="rosesContainer" style="display: none;">
+        <img src="pngwing.com.png" alt="Rose" class="rose" style="top: 20%; left: 30%;" />
+        <img src="—Pngtree—red roses with swirls lovely_8998751.png" alt="Rose" class="rose" style="top: 40%; left: 60%;" />
+        <!-- Add more roses as needed -->
+    </div>
+
+    <button id="openEmailButton" style="display: none;">Open Email</button>
+
+    <div id="loveLetter" style="display: none;">
+        <p>Dear Melody,</p>
+        <p>
+            I hope this message finds you well and brings a smile to your face. You are the sunshine of my life, and
+            I cherish every moment we spend together. Your kindness, laughter, and love make my world brighter.
+        </p>
+        <p>
+            I wanted to express my feelings for you in this special way. You mean the world to me, and I am grateful
+            for the joy and warmth you bring into my life. Our connection is unique and beautiful, and I am blessed to
+            have you as my sweetheart.
+        </p>
+        <p>
+            As we continue this journey together, know that my love for you grows stronger with each passing day. You
+            are my confidant, my partner in crime, and the one who holds the key to my heart.
+        </p>
+        <p>
+            I'm proud of you.
+            With all my love,
+            Olive
+        </p>
+    </div>
+
+    <script>
+        const messages = [
+            "My love for you is eternal, Melody.",
+            "You are the sunshine of my life.",
+            "With you, every day feels like Valentine's Day.",
+            "Your love fills my heart with joy.",
+            "I'm so grateful to have you as my sweetheart.",
+            "Together, we can conquer the world."
+        ];
+
+        const loveLetter = document.getElementById("loveLetter");
+        const messageButton = document.getElementById("messageButton");
+        const messageElement = document.getElementById("message");
+        const openEmailButton = document.getElementById("openEmailButton");
+        const rosesContainer = document.getElementById("rosesContainer");
+
+        messageButton.addEventListener("click", function() {
+            const randomIndex = Math.floor(Math.random() * messages.length);
+            const message = messages[randomIndex];
+            messageElement.textContent = message;
+
+            // Add confetti effect
+            const confettiContainer = document.createElement("div");
+            confettiContainer.classList.add("confetti-container");
+            for (let i = 0; i < 50; i++) {
+                const confettiSpan = document.createElement("span");
+                confettiSpan.classList.add("confetti");
+                confettiSpan.style.left = Math.random() * 100 + "%";
+                confettiSpan.style.animationDelay = Math.random() * 5 + "s";
+                confettiContainer.appendChild(confettiSpan);
+            }
+            document.body.appendChild(confettiContainer);
+
+            // Show roses after a delay
+            setTimeout(function() {
+                rosesContainer.style.display = "block";
+            }, 3000); // Show roses after 3 seconds
+
+            // Show open email button after a delay
+            setTimeout(function() {
+                openEmailButton.style.display = "block";
+            }, 6000); // Show open email button after 6 seconds
+        });
+
+        openEmailButton.addEventListener("click", function() {
+            rosesContainer.style.display = "none";
+            openEmailButton.style.display = "none";
+            loveLetter.style.display = "block";
+        });
+    </script>
+</body>
+
+</html>
 
